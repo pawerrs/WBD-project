@@ -1,0 +1,74 @@
+INSERT INTO "OPERATORZY_SIECI_KOMÓRKOWEJ" VALUES (1,'Orange','99/07/12','SA','010101010100111001','J','60.2','Telekomunikacja','1023456789','123456789','tmobile@orange.com');
+ 
+INSERT INTO "PLACÓWKI_SPRZEDA¯Y" VALUES (1,'10000','10','G³ówna siedziba Orange',1);
+INSERT INTO "PLACÓWKI_SPRZEDA¯Y" VALUES (2,'100','1','Punkt sprzeda¿y',1);
+ 
+INSERT INTO "PRACOWNICY" VALUES('1','Krzysztof', 'Jarzyna', '89061205991', '89/06/12', '10/07/14' , 'prezes', '12725635637837439743', '506789453', 'kjarzyna@operatornumerjeden.com','1','1');
+INSERT INTO "PRACOWNICY" VALUES('2','Pawe³','Kowalik', '88051209345','88/05/12','13/06/16','kierownik','12345678912345678901','234345456','pkowalik@operatornumerjeden.com','1','1');
+INSERT INTO "PRACOWNICY" VALUES('3','Damian','Fronia','96101304556','96/10/13','12/11/16','kierownik','34645796741069463901','630495840','dfronia@operatornumerjeden.com','2','1');
+INSERT INTO "PRACOWNICY" VALUES('4','Adam', 'Mielczewski', '88110905991', '88/11/09', '14/02/11' , 'administartor', '12098235637938639743', '509137353', 'amielczewski@operatornumerjeden.com','2','1');
+INSERT INTO "KONTA" VALUES ('pkowalik', 'pkowalik', 'kierownik', 2);
+INSERT INTO "KONTA" VALUES ('kjarzyna', 'kjarzyna', 'prezes', 1);
+INSERT INTO "KONTA" VALUES ('dfronia', 'dfronia', 'kierownik', 3);
+INSERT INTO "KONTA" VALUES ('amielczewski', 'amielczewski', 'administrator', 4);
+INSERT INTO "GRAFIKI" VALUES('1', '120','45','1');
+INSERT INTO "GRAFIKI" VALUES('2','160','15','2');
+INSERT INTO "GRAFIKI" VALUES('3','120','50','3');
+INSERT INTO "GRAFIKI" VALUES('4', '100','25','4'); 
+INSERT INTO "WYNAGRODZENIA" VALUES('1','17/05/12','4000','1200',1);
+INSERT INTO "WYNAGRODZENIA" VALUES('2','17/07/04','1000','100','2');
+INSERT INTO "WYNAGRODZENIA" VALUES('3','17/08/25','3300','900','3');
+INSERT INTO "WYNAGRODZENIA" VALUES('4','17/09/30','2500','560','4');
+ 
+INSERT INTO "SPRZÊTY" VALUES('M1X1','lodówka','do przechowywania ¿ywnoœci','1','111','Bosch','2003','kgn39kl35','18/06/19','1');
+INSERT INTO "SPRZÊTY" VALUES('M1X2','telewizor','do wyœwietlania wiadomoœci','4','410','Panasonic','2010','viera','18/09/10','1');
+INSERT INTO "SPRZÊTY" VALUES('M1X3','mikrofalówka','do podgrzewania ¿ywnoœci','1','111','Ciep³eSzybko','2010','UD1500','20/05/19','1');
+INSERT INTO "SPRZÊTY" VALUES('M1X4','stó³','do spo¿ywania ¿ywnoœci','1','111','BRW','2010','krosno','30/12/31','1');
+INSERT INTO "SPRZÊTY" VALUES('M1X5','komputer','zastosowany w celach s³u¿bowych','7','732','Dell','2017','Amiga','22/01/02','1');
+INSERT INTO "SPRZÊTY" VALUES('M2X6','monitor','zastosowany w celach s³u¿bowych','1','41','iiyama','2007','500','21/09/07','2');
+INSERT INTO "SPRZÊTY" VALUES('M2X7','komputer','zastosowany w celach s³u¿bowych','1','10','Acer','2012','E5-81239','23/01/22','2');
+INSERT INTO "SPRZÊTY" VALUES('M2X8','telefon','komunikacja wewnêtrzna','1','10','CallInc','1990','OldTimer','20/03/15','2');
+INSERT INTO "SPRZÊTY" VALUES('M2X9','telewizor','do wyœwietlania wiadomoœci','1','12','LG','2017','CRT','30/04/01','2');
+INSERT INTO "SPRZÊTY" VALUES('M2X10','monitor','zastosowany w celach s³u¿bowych','1','10','Panasonic','2001','Samsung','19/01/10','2');
+ 
+INSERT INTO "ADRESY" VALUES('1','Waryñskiego','Warszawa','Polska','00-221','123','1','1');
+INSERT INTO "ADRESY" VALUES('2','Marsza³kowska','Kotlin','Polska','19-123','12','392','2');
+ 
+INSERT INTO "KLIENCI" VALUES('1','Jêdrzej','Zbigniew','81120123129','81/12/01','AXP123','19/12/21','48129375912037559123','993067121','zibi@o2.pl','1');
+INSERT INTO "KLIENCI" VALUES('2','Franciszek','Janusz','88010508450','88/01/05','AZS123','22/09/23','97492867391029384758','883950765','janiszek@onet.pl','1');
+ 
+INSERT INTO "US£UGI" VALUES('1','1');
+INSERT INTO "US£UGI" VALUES('2','1');
+INSERT INTO "US£UGI" VALUES('3','1');
+INSERT INTO "US£UGI" VALUES('4','1');
+INSERT INTO "US£UGI" VALUES('5','1');
+INSERT INTO "US£UGI" VALUES('6','1');
+INSERT INTO "US£UGI" VALUES('7','1');
+INSERT INTO "US£UGI" VALUES('8','1');
+INSERT INTO "US£UGI" VALUES('9','1');
+INSERT INTO "US£UGI" VALUES('10','1');
+ 
+INSERT INTO "ZAMÓWIENIA_US£UG" VALUES(1,1,'17/10/02','19/10/2','884009123');
+INSERT INTO "ZAMÓWIENIA_US£UG" VALUES(2,4,'16/02/25','19/02/25','994857384');
+INSERT INTO "ZAMÓWIENIA_US£UG" VALUES(1,3,'09/10/22','10/12/16','992850127');
+INSERT INTO "ZAMÓWIENIA_US£UG" VALUES(2,6,'15/05/11','18/05/11','113859230');
+ 
+INSERT INTO "ABONAMENTY" VALUES('1','89','T','T','T');
+INSERT INTO "ABONAMENTY" VALUES('2','24','N','N','T');
+ 
+INSERT INTO "MIXY" VALUES('3','50','25');
+INSERT INTO "MIXY" VALUES('4','25','36');
+ 
+INSERT INTO "KARTY" VALUES('5','5','12');
+INSERT INTO "KARTY" VALUES('6','15','24');
+ 
+INSERT INTO "UBEZPIECZENIA_TELEFONU" VALUES('1','DoNotDrop','Ubezpieczenie, które nie uwzglêdnia uszkodzeñ fizycznych','DND','17/10/01','19/10/01','500','1');
+INSERT INTO "UBEZPIECZENIA_TELEFONU" VALUES('2','EverythingButNotWater','Ubezpiecznie, które nie uwzglêdnia zalania','EBNW','15/03/12','17/03/12','1000','1');
+ 
+INSERT INTO "TELEFONY" VALUES('7','Samsung','Y1','2499','12','17/10/21');
+INSERT INTO "TELEFONY" VALUES('8','iPhone','SE','1099','24','15/08/10');
+INSERT INTO "TELEFONY" VALUES('9','Xiomi','Mi 5','1499','24','16/01/10');
+INSERT INTO "TELEFONY" VALUES('10','LG','G5','699','12','17/04/12');
+ 
+INSERT INTO "ZAMÓWIENIA_UBEZPIECZENIA" VALUES('1','1','17/09/07');
+INSERT INTO "ZAMÓWIENIA_UBEZPIECZENIA" VALUES('2','2','15/03/11');

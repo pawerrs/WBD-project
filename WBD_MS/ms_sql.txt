@@ -1,0 +1,387 @@
+
+
+/*
+Created: 12.12.2017
+Modified: 03.01.2018
+Model: OperatorLogiczny
+Database: Oracle 11g Release 2
+*/
+
+
+-- Create tables section -------------------------------------------------
+
+-- Table Operatorzy_sieci_komórkowej
+
+CREATE TABLE   Operatorzy_sieci_komórkowej  (
+    ID_operatora   Integer NOT NULL,
+    Nazwa   Varchar(30 ) NOT NULL,
+    Data_za³o¿enia   Varchar(20) NOT NULL,
+    Typ_spó³ki   Varchar(20 ) NOT NULL,
+    Logo   Varchar(30) NOT NULL,
+    Sekcja_PKD   Varchar(1 ) NOT NULL,
+    Grupa_PKD   Varchar(4 ) NOT NULL,
+    Nazwa_grupowania   Varchar(100 ) NOT NULL,
+    Numer_NIP   Varchar(10 ) NOT NULL,
+    Numer_telefonu   Varchar(12 ) NOT NULL,
+    Adres_email   Varchar(30 ) NOT NULL
+)
+
+
+-- Add keys for table Operatorzy_sieci_komórkowej
+
+ALTER TABLE   Operatorzy_sieci_komórkowej   ADD CONSTRAINT   Unique_Identifier1   PRIMARY KEY (  ID_operatora  )
+
+
+-- Table Placówki_sprzeda¿y
+
+CREATE TABLE   Placówki_sprzeda¿y  (
+    ID_placówki   Integer NOT NULL,
+    Powierzchnia   Integer NOT NULL,
+    Iloœæ_piêter   Integer NOT NULL,
+    Nazwa   Varchar(30 ),
+    ID_operatora   Integer NOT NULL
+)
+
+
+-- Create indexes for table Placówki_sprzeda¿y
+
+CREATE INDEX   IX_Operator_posiada   ON   Placówki_sprzeda¿y   (  ID_operatora  )
+
+
+-- Add keys for table Placówki_sprzeda¿y
+
+ALTER TABLE   Placówki_sprzeda¿y   ADD CONSTRAINT   Unique_Identifier2   PRIMARY KEY (  ID_placówki  )
+
+
+-- Table Pracownicy
+
+CREATE TABLE   Pracownicy  (
+    ID_pracownika   Integer NOT NULL,
+    Imiê   Varchar(10 ) NOT NULL,
+    Nazwisko   Varchar(20 ) NOT NULL,
+    PESEL   Char(11 ),
+    Data_urodzenia   Varchar(30) NOT NULL,
+    Data_zatrudnienia   Varchar(30)  NOT NULL,
+    Stanowisko   Varchar(30 ) NOT NULL,
+    Nume_konta_bankowego   Varchar(30 ) NOT NULL,
+    Numer_telefonu   Varchar(12 ) NOT NULL,
+    Adres_email   Varchar(40 ) NOT NULL,
+    ID_placówki   Integer,
+    ID_operatora   Integer NOT NULL
+);
+
+
+-- Create indexes for table Pracownicy
+
+CREATE INDEX   IX_Kieruje_placówk¹   ON   Pracownicy   (  ID_placówki  )
+
+
+CREATE INDEX   IX_Operator_zatrudnia   ON   Pracownicy   (  ID_operatora  )
+
+
+-- Add keys for table Pracownicy
+
+ALTER TABLE   Pracownicy   ADD CONSTRAINT   Unique_Identifier3   PRIMARY KEY (  ID_pracownika  )
+
+
+-- Table Klienci
+
+CREATE TABLE   Klienci  (
+    ID_klienta   Integer NOT NULL,
+    Imie   Varchar(20 ) NOT NULL,
+    Nazwisko   Varchar(30 ) NOT NULL,
+    PESEL   Char(11 ),
+    Data_urodzenia   Varchar(10) NOT NULL,
+    Nr_Dokumentu_To¿samoœci   Varchar(30 ) NOT NULL,
+    Data_Wa¿noœci_Dokumentu   Varchar(20) NOT NULL,
+    Numer_konta_bankowego   Varchar(20 ),
+    Numer_telefonu   Varchar(12 ),
+    Adres_email   Varchar(30 ),
+    ID_operatora   Integer NOT NULL
+)
+
+
+-- Create indexes for table Klienci
+
+CREATE INDEX   IX_Posiada_klienta   ON   Klienci   (  ID_operatora  )
+
+
+-- Add keys for table Klienci
+
+ALTER TABLE   Klienci   ADD CONSTRAINT   Unique_Identifier7   PRIMARY KEY (  ID_klienta  )
+
+
+-- Table Sprzêty
+
+CREATE TABLE   Sprzêty  (
+    ID_sprzêtu   Varchar(30 ) NOT NULL,
+    Nazwa   Varchar(30 ) NOT NULL,
+    Opis   Varchar(256 ),
+    Nr_piêtra   Integer,
+    Nr_pokoju   Integer,
+    Marka   Varchar(30 ) NOT NULL,
+    Rok_produkcji   Integer NOT NULL,
+    Model   Varchar(50 ),
+    Data_wygaœniêcia_certyfikatu   Varchar(30) NOT NULL,
+    ID_placówki   Integer NOT NULL
+)
+
+
+-- Create indexes for table Sprzêty
+
+CREATE INDEX   IX_Placówka_jest_wyposa¿ona_w   ON   Sprzêty   (  ID_placówki  )
+
+
+-- Add keys for table Sprzêty
+
+ALTER TABLE   Sprzêty   ADD CONSTRAINT   Unique_Identifier8   PRIMARY KEY (  ID_sprzêtu  )
+
+
+-- Table Us³ugi
+
+CREATE TABLE   Us³ugi  (
+    ID_us³ugi   Integer NOT NULL,
+    ID_operatora   Integer NOT NULL
+)
+
+
+-- Create indexes for table Us³ugi
+
+CREATE INDEX   IX_Operator_oferuje   ON   Us³ugi   (  ID_operatora  )
+
+
+-- Add keys for table Us³ugi
+
+ALTER TABLE   Us³ugi   ADD CONSTRAINT   Unique_Identifier9   PRIMARY KEY (  ID_us³ugi  )
+
+
+-- Table Mixy
+
+CREATE TABLE   Mixy  (
+    ID_us³ugi   Integer NOT NULL,
+    Minimalna_kwota_do³adowania   integer NOT NULL,
+    Iloœæ_do³adowañ   Integer NOT NULL
+)
+
+
+-- Add keys for table Mixy
+
+ALTER TABLE   Mixy   ADD CONSTRAINT   Unique_Identifier11   PRIMARY KEY (  ID_us³ugi  )
+
+
+-- Table Karty
+
+CREATE TABLE   Karty  (
+    ID_us³ugi   Integer NOT NULL,
+    Cena_karty   Integer NOT NULL,
+    Wa¿noœæ_po³¹czeñ_wychodz¹cych   Integer NOT NULL
+)
+
+
+-- Add keys for table Karty
+
+ALTER TABLE   Karty   ADD CONSTRAINT   Unique_Identifier12   PRIMARY KEY (  ID_us³ugi  )
+
+
+-- Table Telefony
+
+CREATE TABLE   Telefony  (
+    ID_us³ugi   Integer NOT NULL,
+    Marka   Varchar(20 ) NOT NULL,
+    Model   Varchar(30 ) NOT NULL,
+    Cena   Integer NOT NULL,
+    Okres_gwarancji   Integer NOT NULL,
+    Data_rozpoczêcia_gwarancji   Varchar(30) NOT NULL
+)
+
+
+-- Add keys for table Telefony
+
+ALTER TABLE   Telefony   ADD CONSTRAINT   Unique_Identifier13   PRIMARY KEY (  ID_us³ugi  )
+
+
+-- Table Ubezpieczenia_telefonu
+
+CREATE TABLE   Ubezpieczenia_telefonu  (
+    ID_ubezpieczenia   Integer NOT NULL,
+    Nazwa_ubezpieczenia   Varchar(50 ) NOT NULL,
+    Opis   Varchar(1000 ) NOT NULL,
+    Rodzaj_ubezpieczenia   Varchar(30 ) NOT NULL,
+    Data_rozpoczêcia   Varchar(30) NOT NULL,
+    Data_zakoñczenia   Varchar(30) NOT NULL,
+    Cena   Integer NOT NULL,
+    ID_operatora   Integer NOT NULL
+)
+
+-- Create indexes for table Ubezpieczenia_telefonu
+
+CREATE INDEX   IX_Operator_zapewnia   ON   Ubezpieczenia_telefonu   (  ID_operatora  )
+
+
+-- Add keys for table Ubezpieczenia_telefonu
+
+ALTER TABLE   Ubezpieczenia_telefonu   ADD CONSTRAINT   Unique_Identifier14   PRIMARY KEY (  ID_ubezpieczenia  )
+
+
+-- Table Grafiki
+
+CREATE TABLE   Grafiki  (
+    ID_grafiku   Integer NOT NULL,
+    Liczba_godzin_BH   Integer NOT NULL,
+    Liczba_godzin_NBH   Integer NOT NULL,
+    ID_pracownika   Integer NOT NULL
+)
+
+
+-- Add keys for table Grafiki
+
+ALTER TABLE   Grafiki   ADD CONSTRAINT   Unique_Identifier15   PRIMARY KEY (  ID_grafiku  ,  ID_pracownika  )
+
+
+-- Table Adresy
+
+CREATE TABLE   Adresy  (
+    ID_Adresu   Integer NOT NULL,
+    Ulica   Varchar(50 ) NOT NULL,
+    Miasto   Varchar(50 ) NOT NULL,
+    Kraj   Varchar(50 ) NOT NULL,
+    Kod_Pocztowy   Varchar(6 ) NOT NULL,
+    Nr_Budynku   Integer NOT NULL,
+    Nr_Lokalu   Integer,
+    ID_placówki   Integer NOT NULL
+)
+
+
+-- Create indexes for table Adresy
+
+CREATE INDEX   IX_Placówka_posiada   ON   Adresy   (  ID_placówki  )
+
+
+-- Add keys for table Adresy
+
+ALTER TABLE   Adresy   ADD CONSTRAINT   Unique_Identifier6   PRIMARY KEY (  ID_Adresu  )
+
+
+-- Table Abonamenty
+
+CREATE TABLE Abonamenty(
+  ID_us³ugi Integer NOT NULL,
+  Miesiêczna_op³ata Integer NOT NULL,
+  Czy_nielimitowane_rozmowy Char(1 ) NOT NULL,
+  Czy_nielimitowany_internet Char(1 ) NOT NULL,
+  Czy_nielimitowane_sms Char(1 ) NOT NULL
+)
+
+
+
+
+-- Add keys for table Abonamenty
+
+ALTER TABLE   Abonamenty   ADD CONSTRAINT   Unique_Identifier10   PRIMARY KEY (  ID_us³ugi  )
+
+
+-- Table Zamówienia_us³ug
+
+CREATE TABLE   Zamówienia_us³ug  (
+    ID_klienta   Integer NOT NULL,
+    ID_us³ugi   Integer NOT NULL,
+    Data_zamówienia  Varchar(30) NOT NULL,
+    Data_zakoñczenia   Varchar(30) NOT NULL,
+    Numer_telefonu   Varchar(20) NOT NULL
+)
+
+
+-- Table Zamówienia_ubezpieczenia
+
+CREATE TABLE   Zamówienia_ubezpieczenia  (
+    ID_klienta   Integer NOT NULL,
+    ID_ubezpieczenia   Integer NOT NULL,
+    Data_zamówienia   Varchar(30) NOT NULL
+)
+
+
+-- Table Wynagrodzenia
+
+CREATE TABLE   Wynagrodzenia  (
+    ID_wynagrodzenia   Integer NOT NULL,
+    Data   Varchar(30) NOT NULL,
+    Kwota_podstawowa   Integer NOT NULL,
+    Kwota_dodatkowa  Integer,
+    ID_pracownika   Integer NOT NULL
+)
+
+
+-- Create indexes for table Wynagrodzenia
+
+CREATE INDEX   IX_Pracownik_otrzymuje   ON   Wynagrodzenia   (  ID_pracownika  )
+
+
+-- Add keys for table Wynagrodzenia
+
+ALTER TABLE   Wynagrodzenia   ADD CONSTRAINT   Unique_Identifier4   PRIMARY KEY (  ID_wynagrodzenia  ,  ID_pracownika  )
+
+
+-- Table Konta
+
+CREATE TABLE   Konta  (
+    Username   Char(20 ) NOT NULL,
+    Has³o   Char(20 ) NOT NULL,
+    Stanowisko   Char(20 ) NOT NULL,
+    ID_pracownika   Integer NOT NULL
+)
+
+
+-- Create indexes for table Konta
+
+CREATE INDEX   IX_Relationship1   ON   Konta   (  ID_pracownika  )
+
+
+-- Create foreign keys (relationships) section ------------------------------------------------- 
+
+ALTER TABLE   Placówki_sprzeda¿y   ADD CONSTRAINT   Operator_posiada   FOREIGN KEY (  ID_operatora  ) REFERENCES   Operatorzy_sieci_komórkowej   (  ID_operatora  )
+
+
+
+ALTER TABLE   Sprzêty   ADD CONSTRAINT   Placówka_jest_wyposa¿ona_w   FOREIGN KEY (  ID_placówki  ) REFERENCES   Placówki_sprzeda¿y   (  ID_placówki  )
+
+
+
+ALTER TABLE   Pracownicy   ADD CONSTRAINT   Kieruje_placówk¹   FOREIGN KEY (  ID_placówki  ) REFERENCES   Placówki_sprzeda¿y   (  ID_placówki  )
+
+
+
+ALTER TABLE   Pracownicy   ADD CONSTRAINT   Operator_zatrudnia   FOREIGN KEY (  ID_operatora  ) REFERENCES   Operatorzy_sieci_komórkowej   (  ID_operatora  )
+
+
+
+ALTER TABLE   Klienci   ADD CONSTRAINT   Posiada_klienta   FOREIGN KEY (  ID_operatora  ) REFERENCES   Operatorzy_sieci_komórkowej   (  ID_operatora  )
+
+
+
+ALTER TABLE   Us³ugi   ADD CONSTRAINT   Operator_oferuje   FOREIGN KEY (  ID_operatora  ) REFERENCES   Operatorzy_sieci_komórkowej   (  ID_operatora  )
+
+
+
+ALTER TABLE   Ubezpieczenia_telefonu   ADD CONSTRAINT   Operator_zapewnia   FOREIGN KEY (  ID_operatora  ) REFERENCES   Operatorzy_sieci_komórkowej   (  ID_operatora  )
+
+
+
+ALTER TABLE   Adresy   ADD CONSTRAINT   Placówka_posiada   FOREIGN KEY (  ID_placówki  ) REFERENCES   Placówki_sprzeda¿y   (  ID_placówki  )
+
+
+
+ALTER TABLE   Grafiki   ADD CONSTRAINT   Pracownik_ma   FOREIGN KEY (  ID_pracownika  ) REFERENCES   Pracownicy   (  ID_pracownika  )
+
+
+
+ALTER TABLE   Wynagrodzenia   ADD CONSTRAINT   Pracownik_otrzymuje   FOREIGN KEY (  ID_pracownika  ) REFERENCES   Pracownicy   (  ID_pracownika  )
+
+
+
+ALTER TABLE   Konta   ADD CONSTRAINT   Pracownicy_maj¹   FOREIGN KEY (  ID_pracownika  ) REFERENCES   Pracownicy   (  ID_pracownika  )
+
+
+
+
+
+

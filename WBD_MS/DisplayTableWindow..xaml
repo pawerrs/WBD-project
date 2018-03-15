@@ -1,0 +1,26 @@
+﻿<Window x:Class="WBD_MS.DisplayTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WBD_MS"
+        Icon="tables.ico"
+        mc:Ignorable="d"
+        Title="Display table" TextBlock.TextAlignment="Center" Height="490.591" FontSize="25" Width="862.185" Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="25" Margin="20">
+
+        <Grid Margin="-10,10,-24,-39.2" RenderTransformOrigin="0.51,0.277">
+            <TextBox x:Name="textBoxColumnName" FontSize="15" VerticalAlignment="Stretch"  Margin="28,356,680,60" TextAlignment="Center" Background="#FF545D6A" Height="34" />
+            <TextBox x:Name="textBoxValue" FontSize="15" VerticalAlignment="Stretch"  Margin="349,356,368,60" TextAlignment="Center" Background="#FF545D6A" Height="34" />
+            <DataGrid x:Name="dataGrid" AutoGenerateColumns="true" HorizontalAlignment="Left" Height="299" Margin="36,10,0,0" VerticalAlignment="Top" Width="768" FontSize="15"/>
+            <Label x:Name="label" Content="Column name" HorizontalAlignment="Left" Margin="36,318,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White"/>
+            <Label x:Name="label_Copy" Content="Value" HorizontalAlignment="Left" Margin="395,318,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White"/>
+            <Label x:Name="label_Copy1" Content="Sign" HorizontalAlignment="Left" Margin="241,318,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White"/>
+            <TextBox x:Name="textBoxSign" FontSize="15" VerticalAlignment="Stretch" Height="34" Margin="200,356,522,60" TextAlignment="Center" Background="#FF545D6A" />
+            <Button x:Name="buttonFilterIt" Content="Find it" HorizontalAlignment="Left" Height="30" Margin="629,356,0,0" VerticalAlignment="Top" Width="76"  Background="#FF7C7979" FontSize="20" Click="buttonFilterIt_Click"/>
+            <Button x:Name="buttonClear" Content="Clear" HorizontalAlignment="Left" Margin="728,356,0,0" VerticalAlignment="Top" Width="76" Height="30" Background="#FF7C7979" FontSize="20" Click="buttonClear_Click"/>
+            <TextBox x:Name="textBoxOperation" FontSize="15" VerticalAlignment="Stretch"  Margin="507,356,250,60" TextAlignment="Center" Background="#FF545D6A" Height="34" />
+            <Label x:Name="label_Copy2" Content="Operation" HorizontalAlignment="Left" Margin="513,318,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White"/>
+        </Grid>
+    </Border>
+</Window>

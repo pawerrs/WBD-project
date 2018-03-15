@@ -1,0 +1,36 @@
+﻿<Window x:Class="WBD_MS.PersonalData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WBD_MS"
+        mc:Ignorable="d"
+        Icon="detail.ico"
+        Title="Personal information" TextBlock.TextAlignment="Center" 
+        Height="700" Width="400" FontSize="14" Background="#04c582" Closed="Window_Closed">
+    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20,10,19.6,30">
+            <Label  Content="Informations" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Separator></Separator>
+            <Label Content="First Name" Foreground="white" />
+            <TextBox Name ="txtFirstName" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Last Name" Foreground="white" />
+            <TextBox Name ="txtLastName" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="PESEL" Foreground="white"/>
+            <TextBox Name ="txtPESEL" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Birth Date" Foreground="white"/>
+            <TextBox Name ="txtBirthDate" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Date of employment" Foreground="white"/>
+            <TextBox Name ="txtEmployment" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Position" Foreground="white"/>
+            <TextBox Name ="txtPosition" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Number of bank account" Foreground="white"/>
+            <TextBox Name ="txtAccount" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="Telephone number" Foreground="white"/>
+            <TextBox Name ="txtTelephone" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Label Content="E-mail address" Foreground="white"/>
+            <TextBox Name ="txtEmail" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <Button x:Name="btnConfirm" Content="Confirm" Margin="60,10,59.4,10"  Background="#545d6a" Foreground="white" FontSize="18" Click="btnConfirm_Click"/>
+        </StackPanel>
+    </Border>
+</Window>
